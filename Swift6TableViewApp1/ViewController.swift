@@ -7,15 +7,35 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var textField: UITextField!
   
+  var textArray = [String]()
+  var imageArray = ["1","2","3","4","5"]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-    // Do any additional setup after loading the view.
+
+    tableView.delegate = self
+    tableView.dataSource = self
   }
+  
+  // セルの数
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return textArray.count
+  }
+    
+  // セクションの数
+  func numberOfSections(in tableView: UITableView) -> Int {
+    return 1
+  }
+
+  // セルの構築
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+  }
+  
 
   @IBAction func tap(_ sender: Any) {
     
