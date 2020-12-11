@@ -31,6 +31,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   func numberOfSections(in tableView: UITableView) -> Int {
     return 1
   }
+  
+  // セルの高さ
+  func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    return 531
+  }
 
   // セルの構築
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -40,7 +45,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     let label = cell.contentView.viewWithTag(2) as! UILabel
   
     label.text = textArray[indexPath.row]
-    imageView.image = UIImag(named: imageArray[indexPath.row])
+    imageView.image = UIImage(named: imageArray[indexPath.row])
     
     return cell
   }
@@ -48,6 +53,13 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   @IBAction func tap(_ sender: Any) {
     
+    if textArray.count > 5 || textField.text?.isEmpty == true {
+      return
+    }
+    
+    textArray.append(textField.text!)
+    textField.text = ""
+    tableView.reloadData()
   }
   
 }
