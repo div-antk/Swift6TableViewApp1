@@ -34,6 +34,15 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
   // セルの構築
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    
+    let imageView = cell.contentView.viewWithTag(1) as! UIImageView
+    let label = cell.contentView.viewWithTag(2) as! UILabel
+  
+    label.text = textArray[indexPath.row]
+    imageView.image = UIImag(named: imageArray[indexPath.row])
+    
+    return cell
   }
   
 
