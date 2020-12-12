@@ -59,8 +59,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     textArray.append(textField.text!)
     textField.text = ""
-    tableView.reloadData()
+    
+    if textArray.count <= 5 {
+      tableView.reloadData()
+    }
   }
-  
 }
-
